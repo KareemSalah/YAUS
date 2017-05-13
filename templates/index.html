@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Mobile first-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="/static/css/yaus_main_index.css">
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Sura|Trykker" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container-fluid">
+
+            <div class="row">
+                <h1 class="column-center middle-title">YAUS</h1>
+            </div>
+
+            <div class="row column-center large-paragraph">
+                <p>
+                    <strong>Y</strong>et <strong>A</strong>nother <strong>U</strong>rl <strong>S</strong>hortner
+                    <br><br>
+                </p>
+            </div>
+
+            <div class="row column-center large-paragraph">
+                <p>
+                    Just put your long link in here, get another short one, no more link headaches :)
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 column-center">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ url_form }}
+                        <br>
+                        <input class="btn btn-info" type="submit" value="Minify">
+                    </form>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+        </div>
+    </body>
+
+</html>

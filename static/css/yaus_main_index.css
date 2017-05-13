@@ -1,0 +1,21 @@
+.middle-title {
+    padding-top: 15vh;
+    font-size: 7vh;
+}
+
+.column-center {
+    text-align: center;
+    margin: auto;
+}
+
+.form-submit {
+    margin-top: 10px;
+}
+
+.large-paragraph {
+    font-size: 2vh;
+}
+
+.column-full-width {
+    display: block;
+}
