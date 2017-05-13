@@ -14,4 +14,4 @@ I'm gonna be logging here what I'm doing, it won't be very detailed, just date a
 - 1:30 modelling the app, I've decided to create 2 django apps, and a model, and I've been researching into concurrency and I found that there's a concurrency methods to solve this problem, one of them is called celery and the other is django-concurrency, I've decided to use the last one.
 - 1:15 desiging front page, main form, styling, creating redirects, searching more on how forms work and diving deeper into them
 - 1:00 another hour researching into concurrency issue, decided to use the MySQL locking mechanism, made some modifications on the design, changed some responsibility for apps
-- 
+- 1:00 spent an hour implementing small features (shortner), however, I was investigating in python interfaces, got introduced to Zope, an interface manager, also was digging deeper in overriding django's model operations, got introduced to CustomManager, may I'll be using it shortly.

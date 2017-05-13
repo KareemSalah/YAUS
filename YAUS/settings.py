@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'yaus_main.apps.YausMainConfig',
     'shortner.apps.ShortnerConfig',
+    'serializer.apps.SerializerConfig',
 ]
 
 MIDDLEWARE = [
