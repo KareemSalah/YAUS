@@ -5,10 +5,9 @@ from django.shortcuts import Http404
 from forms import UrlForm
 
 
-'''
-This view renders the front page
-'''
 def index(request):
+    """This view renders the front page"""
+
     form = UrlForm()
     messages = {'success': [], 'errors': []}
 
