@@ -18,5 +18,5 @@ from yaus_main.views import *
 
 urlpatterns = [
     url(r'^$', index),
-    url(r'^[a-zA-Z0-9]{6}$', redirector),
+    url(r'^[0-9]{0,10}/?$', redirector),
 ]

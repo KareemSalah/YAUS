@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'yaus_main.apps.YausMainConfig',
+    'shortner.apps.ShortnerConfig',
+    'serializer.apps.SerializerConfig',
 ]
 
 MIDDLEWARE = [
