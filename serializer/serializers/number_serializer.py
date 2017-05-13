@@ -2,7 +2,7 @@ from django.db import transaction
 from serializer.models import NumberSerializer
 
 
-class NumberSerializer():
+class NumberSerializerEngine():
     """This serializer provides a number as a counter for the next short url"""
 
     @staticmethod

@@ -19,3 +19,7 @@
 .column-full-width {
     display: block;
 }
+
+.small-top-margin {
+    margin-top: 2vh;
+}

@@ -4,11 +4,11 @@ from yaus_main.globals import *
 
 
 def create_url(serial):
-    return domain + "/" + serial
+    return domain + "/" + str(serial)
 
 
 def shorten(url):
-    serial = NumberSerializer.get_new_serial()
+    serial = NumberSerializerEngine.get_new_serial()
     short_url = ShortUrl(short_url=serial, long_url=url)
     short_url.save()
     return create_url(serial)
