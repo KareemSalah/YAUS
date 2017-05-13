@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
+from django.shortcuts import redirect
 from forms import UrlForm
 from shortner.controls import *
-
+from shortner.models import ShortUrl
 
 def index(request):
     """This view renders the front page"""
@@ -22,5 +23,16 @@ def index(request):
 
 
 def redirector(request):
-    # TODO: implement
-    return render(request, "index.html", {})
+    short_url = request.get_raw_uri().split('/')[-1]
+    record = ShortUrl.objects.filter(short_url=short_url).first()
+
+    if record is not None:
+        long_url = record.long_url
+    else:
+        return render(request, "404.html", {'messages': {'errors': ['This URL is not valid, where did you get it from?', 'dont try to be slick']}})
+
+    return redirect(long_url, permanent=True)
+
+
+def invalid_url(request):
+    return render(request, "404.html", {'messages': {'errors': ['This URL is not valid, where did you get it from?', 'dont try to be slick']}})
