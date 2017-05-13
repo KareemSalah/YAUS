@@ -6,6 +6,7 @@ from forms import UrlForm
 from shortner.controls import *
 from shortner.models import ShortUrl
 
+
 def index(request):
     """This view renders the front page"""
 
@@ -28,6 +29,8 @@ def redirector(request):
 
     if record is not None:
         long_url = record.long_url
+        if long_url[0:7] != "http://" and long_url[0:8] != "https://":
+            long_url = "http://" + long_url
     else:
         return render(request, "404.html", {'messages': {'errors': ['This URL is not valid, where did you get it from?', 'dont try to be slick']}})
 
