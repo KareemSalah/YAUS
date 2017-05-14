@@ -20,9 +20,9 @@ router.register(r'getall', ShortUrlViewSet)
 
 urlpatterns = [
     # url(r'^', include(router.urls)),
-    url(r'^shorten/$', shorten),
-    url(r'^getall/$', get_all),
-    url(r'^getorig/$', get_original),
+    url(r'^shorten/$', api_shorten),
+    url(r'^getall/$', api_get_all),
+    url(r'^getorig/$', api_get_original),
     url(r'^$', api_guide),
-    url(r'^', invalid_url),
+    url(r'^', api_invalid_url),
 ]

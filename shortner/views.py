@@ -9,23 +9,28 @@ from .controls import *
 import json
 
 
-def create_url(serial):
-    return domain + "/" + str(serial)
-
-
 @csrf_exempt
-def shorten(request):
-    if request.POST is None:
+def api_shorten(request):
+    if request.POST is None or (request.POST is not None and request.POST['long_url'] is None):
         return json_response(request, json_data={'errors': ['invalid post request']})
 
-
-@csrf_exempt
-def get_all(request):
-    pass
+    serial = shorten(request.POST['long_url'])
+    # TODO
 
 
 @csrf_exempt
-def get_original(request):
+def api_get_all(request):
+    all_urls = ShortUrl.objects.all()
+    json_data = {'success': 'yes', 'urls': []}
+
+    for url in all_urls:
+        json_data['urls'].append({'short_url': url.short_url, 'long_url': url.long_url})
+
+    return json_response(request, json_data)
+
+
+@csrf_exempt
+def api_get_original(request):
     print(request.POST)
     json_data = {}
 
@@ -44,7 +49,7 @@ def get_original(request):
 
 
 @csrf_exempt
-def invalid_url(request):
+def api_invalid_url(request):
     return json_response(request, json_data={'errors': ['invalid api url']})
 
 
