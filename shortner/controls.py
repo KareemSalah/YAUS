@@ -8,9 +8,9 @@ def create_url(serial):
 
 
 def shorten(url):
-    serial = NumberSerializerEngine.get_new_serial()
-    short_url = ShortUrl(short_url=serial, long_url=url)
-    short_url.save()
+    serial = unicode(NumberSerializerEngine.get_new_serial())
+    shortened_url = ShortUrl(short_url=serial, long_url=url)
+    shortened_url.save()
     return create_url(serial)
 
 
