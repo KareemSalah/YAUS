@@ -13,10 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from yaus_main.views import *
 
+
 urlpatterns = [
+    url(r'^api/', include('shortner.api_urls')),
     url(r'^$', index),
     url(r'^[0-9]{0,10}/?$', redirector),
     url(r'', invalid_url),
