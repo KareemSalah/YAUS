@@ -11,4 +11,4 @@ class ShortUrl(models.Model):
     time_stamp = models.DateField(auto_now=True)
 
     def __str__(self):
-        return "[" + self.long_url + " => " + self.short_url + "]"
+        return "[" + self.long1_url + " => " + self.short_url + "]"

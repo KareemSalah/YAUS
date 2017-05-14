@@ -11,16 +11,24 @@ import json
 
 @csrf_exempt
 def api_shorten(request):
-    if request.POST is None or (request.POST is not None and request.POST['long_url'] is None):
+    if request.POST is None or (request.POST is not None and 'long_url' not in request.POST):
         return json_response(request, json_data={'errors': ['invalid post request']})
 
-    serial = shorten(request.POST['long_url'])
-    # TODO
+    short_url = shorten(request.POST['long_url'])
+    json_data = {}
+
+    if short_url is not None:
+        json_data['success'] = 'yes'
+        json_data['short_url'] = short_url
+    else:
+        json_data['errors'] = 'something went wrong :/'
+
+    return json_response(request, json_data=json_data)
 
 
 @csrf_exempt
 def api_get_all(request):
-    all_urls = ShortUrl.objects.all()
+    all_urls = get_all()
     json_data = {'success': 'yes', 'urls': []}
 
     for url in all_urls:
@@ -31,15 +39,14 @@ def api_get_all(request):
 
 @csrf_exempt
 def api_get_original(request):
-    print(request.POST)
     json_data = {}
 
-    if request.POST is None or (request.POST is not None and request.POST['short_url'] is None):
+    if request.POST is None or (request.POST is not None and 'short_url' not in request.POST):
         return json_response(request, json_data={'errors': ['invalid post request']})
 
-    long_url = ShortUrl.objects.filter(short_url=request.POST['short_url'][0])
+    long_url = get_original(short_url=request.POST['short_url'])
 
-    if long_url is None:
+    if long_url is None or long_url.first() is None:
         json_data = {'errors': ['this url is not in database']}
         return json_response(request, json_data)
 
