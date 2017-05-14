@@ -13,6 +13,7 @@ def api_shorten(request):
         return json_response(request, json_data={'errors': ['invalid post request']})
 
     # TODO: this could lead to sql injection, sanitize first
+    # TODO: check if the url is valid
     long_url = request.POST['long_url']
 
     short_url = shorten(long_url)

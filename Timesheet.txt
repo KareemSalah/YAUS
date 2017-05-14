@@ -21,3 +21,5 @@ I'm gonna be logging here what I'm doing, it won't be very detailed, just date a
 ======= 14 May =======
 - 1:30 designing an api, and implementing most of it, also was researching on REST api using django and found a framework and was testing it.
 - 1:00 debugging an annoying bug, I downloaded postman to send POST requests, the problem is that I can't see parameters, what's heppening?! :/
+- 0:30 finally solved it :@
+- 1:00 just had another hard day, spend 10 hours at work, only slept for 3 hours, and I just came back home and implemented the api :))

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from forms import UrlForm
 from shortner.controls import *
-from shortner.models import ShortUrl
+from yaus_main.globals import *
 
 
 def index(request):
@@ -15,9 +15,12 @@ def index(request):
 
     # If user submits the form, this view will be triggered also, and this condition will be triggered
     if request.method == 'POST':
+        # TODO: check if the url is valid
         long_url = request.POST['long_url']
+
         # The URL might be validated here before shortening
         short_url = shorten(long_url)
+
         messages['success'] = short_url
 
     return render(request, "index.html", {'url_form': form, 'messages': messages})
@@ -25,18 +28,33 @@ def index(request):
 
 def redirector(request):
     short_url = request.get_raw_uri().split('/')[-1]
-    record = ShortUrl.objects.filter(short_url=short_url).first()
+    record = get_original(short_url)
 
     if record is not None:
+        record = record.first()
         long_url = record.long_url
-        if len(long_url) <= 7:
+        print(long_url)
+        if len(long_url) < 7:
             long_url = "http://" + long_url
-        elif long_url[0:7] != "http://" and long_url[0:8] != "https://":
+        elif long_url[0:7] != "http://":
+            long_url = "http://" + long_url
+        elif len(long_url) > 7 and long_url[0:8] != "https://":
             long_url = "http://" + long_url
     else:
         return render(request, "404.html", {'messages': {'errors': ['This URL is not valid, where did you get it from?', 'dont try to be slick']}})
 
     return redirect(long_url, permanent=True)
+
+
+def view_all(request):
+    all_urls = get_all()
+    for url in all_urls:
+        url.short_url = domain+"/"+url.short_url
+
+    data = {
+        'short_urls': all_urls,
+    }
+    return render(request, "links.html", data)
 
 
 def invalid_url(request):
