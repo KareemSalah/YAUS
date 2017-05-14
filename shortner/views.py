@@ -2,8 +2,6 @@
 from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
-
-from yaus_main.globals import *
 from django.shortcuts import render
 from .controls import *
 import json
@@ -14,7 +12,10 @@ def api_shorten(request):
     if request.POST is None or (request.POST is not None and 'long_url' not in request.POST):
         return json_response(request, json_data={'errors': ['invalid post request']})
 
-    short_url = shorten(request.POST['long_url'])
+    # TODO: this could lead to sql injection, sanitize first
+    long_url = request.POST['long_url']
+
+    short_url = shorten(long_url)
     json_data = {}
 
     if short_url is not None:
@@ -44,7 +45,10 @@ def api_get_original(request):
     if request.POST is None or (request.POST is not None and 'short_url' not in request.POST):
         return json_response(request, json_data={'errors': ['invalid post request']})
 
-    long_url = get_original(short_url=request.POST['short_url'])
+    # TODO this could lead to sql injection, sanitize this first
+    serial = request.POST['short_url'].split('/')[-1]
+
+    long_url = get_original(short_url=serial)
 
     if long_url is None or long_url.first() is None:
         json_data = {'errors': ['this url is not in database']}

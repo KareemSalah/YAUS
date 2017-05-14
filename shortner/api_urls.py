@@ -4,18 +4,19 @@ from shortner.models import ShortUrl
 from rest_framework import routers, serializers, viewsets
 
 
-class ShortUrlSerializer(serializers.Serializer):
-    short_url = serializers.CharField(max_length=10)
-    long_url = serializers.CharField(max_length=255)
-
-
-class ShortUrlViewSet(viewsets.ModelViewSet):
-    queryset = ShortUrl.objects.all()
-    serializer_class = ShortUrlSerializer
-
-
-router = routers.DefaultRouter()
-router.register(r'getall', ShortUrlViewSet)
+# The django rest framework code, uncomment this and the first line in the api_patterns
+# class ShortUrlSerializer(serializers.Serializer):
+#     short_url = serializers.CharField(max_length=10)
+#     long_url = serializers.CharField(max_length=255)
+#
+#
+# class ShortUrlViewSet(viewsets.ModelViewSet):
+#     queryset = ShortUrl.objects.all()
+#     serializer_class = ShortUrlSerializer
+#
+#
+# router = routers.DefaultRouter()
+# router.register(r'getall', ShortUrlViewSet)
 
 
 urlpatterns = [
