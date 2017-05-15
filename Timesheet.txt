@@ -23,3 +23,4 @@ I'm gonna be logging here what I'm doing, it won't be very detailed, just date a
 - 1:00 debugging an annoying bug, I downloaded postman to send POST requests, the problem is that I can't see parameters, what's heppening?! :/
 - 0:30 finally solved it :@
 - 1:00 just had another hard day, spend 10 hours at work, only slept for 3 hours, and I just came back home and implemented the api :))
+- 1:00 came back from work, tired as usual :V, however, I came into the MOST INTERESTING bug I've ever encoutered for a while, it was in the browser!! I solved the bug eventually :)

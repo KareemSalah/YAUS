@@ -33,12 +33,7 @@ def redirector(request):
     if record is not None:
         record = record.first()
         long_url = record.long_url
-        print(long_url)
-        if len(long_url) < 7:
-            long_url = "http://" + long_url
-        elif long_url[0:7] != "http://":
-            long_url = "http://" + long_url
-        elif len(long_url) > 7 and long_url[0:8] != "https://":
+        if not ((len(long_url) > 7 and long_url[0:8] == "https://") or (len(long_url) >= 7 and long_url[0:7] == "http://")):
             long_url = "http://" + long_url
     else:
         return render(request, "404.html", {'messages': {'errors': ['This URL is not valid, where did you get it from?', 'dont try to be slick']}})

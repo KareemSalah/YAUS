@@ -18,7 +18,7 @@ from yaus_main.views import *
 
 
 urlpatterns = [
-    # url(r'^api/', include('shortner.api_urls')),
+    url(r'^api/', include('shortner.api_urls')),
     url(r'^$', index),
     url(r'^all/$', view_all),
     url(r'^[0-9]+$', redirector),
