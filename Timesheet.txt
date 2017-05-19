@@ -2,7 +2,6 @@ Hello xD
 I'm gonna be logging here what I'm doing, it won't be very detailed, just date and tasks along with hours.
 
 
-
 ======= 12 May =======
 - 1:00 downloading and preparing environment
 - 1:00 researching among databases, and their features, checking mysql and django compatibility, plus refreshing my django skills
@@ -23,4 +22,31 @@ I'm gonna be logging here what I'm doing, it won't be very detailed, just date a
 - 1:00 debugging an annoying bug, I downloaded postman to send POST requests, the problem is that I can't see parameters, what's heppening?! :/
 - 0:30 finally solved it :@
 - 1:00 just had another hard day, spend 10 hours at work, only slept for 3 hours, and I just came back home and implemented the api :))
+
+======= 15 May =======
 - 1:00 came back from work, tired as usual :V, however, I came into the MOST INTERESTING bug I've ever encoutered for a while, it was in the browser!! I solved the bug eventually :)
+
+======= 16 May =======
+- 2:30 hours reading and trying some stuff in react.js, got a HUGE amount of problems :/
+
+======= 17 May =======
+- unfortunately did nothing :/, came back from work very late and was doing those annoying "surprising" school assignments .. We're at the end of the semester.
+
+======= 18 May =======
+- 3:30 spent SO much time trying to get a boilerplate to work, finally got a small background on webpack, express, webpack-hot-server, babel, babel-presets
+- 1:00 I managed to get some stuff to work, but eventually I didn't code, it's so late and I need to sleep (I'm awake for 23 hours now!!)
+
+======= 19 May =======
+Nothing much .. school annoying assignments :(
+
+
+
+
+
+
+TODO (start @ 19:40):
+- Change hash to something randomer OK @20:35
+- Custom URLs  OK @21:15
+- Validate input URLs OK @21:46
+- Count short url visits 
+- Count number of times a url has been shortened

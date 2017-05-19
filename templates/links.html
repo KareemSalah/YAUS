@@ -27,31 +27,48 @@
         <script src="/static/js/frontpage.js"></script>
     </head>
 
-    <body class="container">
-        <div class="column-center large-paragraph middle-title">
-            <h1>All Urls</h1>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                  <tr class="column-center">
-                    <th>short</th>
-                    <th>long</th>
-                  </tr>
-                </thead>
-                {% for short_url in short_urls %}
-                    <tr>
-                        <th class="col-md-6">
-{#                          <a href="{{ short_url.short_url }}">{{ short_url.short_url }}</a>#}
-                            {{ short_url.short_url }}
-                        </th>
-                        <th class="col-md-6">
-{#                          <a href="{{ short_url.long_url }}">{{ short_url.long_url }}</a>#}
-                            {{ short_url.long_url }}
-                        </th>
-                    </tr>
-                {% endfor %}
-            </table>
-        </div>
+    <body>
+        <header class="content">
+                <div class="container-fluid">
+                    <div class="row header">
+                        <div class="col-lg-12 animated lightSpeedIn">
+                            <p class="vcenter">
+                            <h1 class="column-center">YAUS</h1>
+                            <div class="column-center large-paragraph">
+                                <h3>All Urls</h3>
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row strip-white"></div>
+                <div class="row strip-blue"></div>
+                <div class="row strip-white"></div>
+                <div class="row strip-blue"></div>
+            </header>
+        <div class="container">
+            <div class="table-responsive table">
+                <table class="table table-striped">
+                    <thead>
+                      <tr class="column-center">
+                        <th class="tbl-col-header">short</th>
+                        <th class="tbl-col-header">long</th>
+                      </tr>
+                    </thead>
+                    {% for short_url in short_urls %}
+                        <tr>
+                            <th class="col-md-6">
+    {#                          <a href="{{ short_url.short_url }}">{{ short_url.short_url }}</a>#}
+                                {{ short_url.short_url }}
+                            </th>
+                            <th class="col-md-6">
+    {#                          <a href="{{ short_url.long_url }}">{{ short_url.long_url }}</a>#}
+                                {{ short_url.long_url }}
+                            </th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>  
     </body>
 </html>

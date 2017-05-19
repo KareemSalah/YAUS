@@ -12,3 +12,11 @@ class NumberSerializer(models.Model):
 
     def __str__(self):
         return "Counter=" + str(self.url_num) + " LastModified=" + str(self.last_updated_on)
+
+
+
+class RandomHashes(models.Model):
+	url_hash = models.CharField(max_length=10)
+
+	def __str__(self):
+		return "url_hash => " + self.url_hash

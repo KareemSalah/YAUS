@@ -5,6 +5,16 @@ from django.shortcuts import redirect
 from forms import UrlForm
 from shortner.controls import *
 from yaus_main.globals import *
+import re
+
+
+
+def is_valid_url(url):
+    r_expression = r'^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})$'
+    match = re.match(r_expression, url) 
+    if match is not None:
+        return True
+    return False
 
 
 def index(request):
@@ -15,13 +25,26 @@ def index(request):
 
     # If user submits the form, this view will be triggered also, and this condition will be triggered
     if request.method == 'POST':
-        # TODO: check if the url is valid
         long_url = request.POST['long_url']
+        custom_url = request.POST['custom_url']
+        already_used = False
+        valid_url = False
 
-        # The URL might be validated here before shortening
-        short_url = shorten(long_url)
+        if is_valid_url(long_url):
+            valid_url = True
 
-        messages['success'] = short_url
+            if custom_url is not None and len(custom_url) > 0:
+                qs = get_original(custom_url)
+                if qs is not None and qs.first() is not None:
+                    messages['errors'].append('Custom URL is already used!')
+                    already_used = True
+
+        if not valid_url:
+            messages['errors'].append('Invalid URL!')
+
+        elif not already_used:
+            short_url = shorten(long_url, custom_url=custom_url)
+            messages['success'] = short_url
 
     return render(request, "index.html", {'url_form': form, 'messages': messages})
 
