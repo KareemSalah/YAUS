@@ -15,15 +15,26 @@ def api_shorten(request):
     # TODO: this could lead to sql injection, sanitize first
     # TODO: check if the url is valid
     long_url = request.POST['long_url']
+    custom_url = request.POST['custom_url']
+    already_used = False
+    valid_url = False
+    json_data = {'errors': []}
 
-    short_url = shorten(long_url)
-    json_data = {}
+    if is_valid_url(long_url):
+        valid_url = True
 
-    if short_url is not None:
-        json_data['success'] = 'yes'
-        json_data['short_url'] = short_url
-    else:
-        json_data['errors'] = 'something went wrong :/'
+        if custom_url is not None and len(custom_url) > 0:
+            qs = get_original(custom_url)
+            if qs is not None and qs.first() is not None:
+                json_data['errors'].append('Custom URL is already used!')
+                already_used = True
+        if not valid_url:
+            messages['errors'].append('Invalid URL!')
+
+        elif not already_used:
+            short_url = shorten(long_url, custom_url=custom_url)
+            json_data['success'] = 'yes'
+            json_data['short_url'] = short_url
 
     return json_response(request, json_data=json_data)
 
@@ -34,7 +45,7 @@ def api_get_all(request):
     json_data = {'success': 'yes', 'urls': []}
 
     for url in all_urls:
-        json_data['urls'].append({'short_url': url.short_url, 'long_url': url.long_url})
+        json_data['urls'].append({'short_url': url.short_url, 'long_url': url.long_url, 'visits': url.visits})
 
     return json_response(request, json_data)
 

@@ -48,7 +48,7 @@ class RandomSerializerEngine():
 		counter = 1
 
 		# Counter is used to get out of a race condition
-		while counter < 1000:
+		while counter < 10:
 			counter += 1
 
 			url_hash = RandomSerializerEngine.get_random_hash(hash_length)
@@ -66,7 +66,7 @@ class RandomSerializerEngine():
 					found = False
 					print(similar_hashes)
 					for similar_hash in similar_hashes:
-						if url_hash == similar_hashes.url_hash:
+						if url_hash == similar_hash.url_hash:
 							found = True
 							break
 

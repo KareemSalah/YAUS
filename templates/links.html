@@ -53,17 +53,21 @@
                       <tr class="column-center">
                         <th class="tbl-col-header">short</th>
                         <th class="tbl-col-header">long</th>
+                        <th class="tbl-col-header">visits</th>
                       </tr>
                     </thead>
                     {% for short_url in short_urls %}
                         <tr>
-                            <th class="col-md-6">
+                            <th class="col-md-4">
     {#                          <a href="{{ short_url.short_url }}">{{ short_url.short_url }}</a>#}
                                 {{ short_url.short_url }}
                             </th>
-                            <th class="col-md-6">
+                            <th class="col-md-4">
     {#                          <a href="{{ short_url.long_url }}">{{ short_url.long_url }}</a>#}
                                 {{ short_url.long_url }}
+                            </th>
+                            <th class="col-md-4">
+                                {{ short_url.visits }}
                             </th>
                         </tr>
                     {% endfor %}

@@ -48,5 +48,12 @@ TODO (start @ 19:40):
 - Change hash to something randomer OK @20:35
 - Custom URLs  OK @21:15
 - Validate input URLs OK @21:46
-- Count short url visits 
+- Count short url visits OK @21:14
 - Count number of times a url has been shortened
+
+
+
+Feedback:
+- Clean Code Book (SOLID Principals)
+- Testing for Alan :P
+- 

@@ -8,6 +8,7 @@ class ShortUrl(models.Model):
     # The original URL, max length is 255 so that no one inserts dump data into db and cause problems
     long_url = models.CharField(max_length=255)
     short_url = models.CharField(max_length=10)
+    visits = models.IntegerField(default=0)
     time_stamp = models.DateField(auto_now=True)
 
     def __str__(self):

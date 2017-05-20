@@ -5,16 +5,6 @@ from django.shortcuts import redirect
 from forms import UrlForm
 from shortner.controls import *
 from yaus_main.globals import *
-import re
-
-
-
-def is_valid_url(url):
-    r_expression = r'^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})$'
-    match = re.match(r_expression, url) 
-    if match is not None:
-        return True
-    return False
 
 
 def index(request):
@@ -51,11 +41,11 @@ def index(request):
 
 def redirector(request):
     short_url = request.get_raw_uri().split('/')[-1]
-    record = get_original(short_url)
+    record = get_original(short_url, increment_visits=True)
 
-    if record is not None:
-        record = record.first()
-        long_url = record.long_url
+    if record is not None and record.first() is not None:
+        long_url = record.first().long_url
+
         if not ((len(long_url) > 7 and long_url[0:8] == "https://") or (len(long_url) >= 7 and long_url[0:7] == "http://")):
             long_url = "http://" + long_url
     else:
